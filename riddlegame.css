@@ -1,0 +1,19 @@
+body 
+{
+    text-align: center;
+}
+#riddle-container 
+{
+    margin: 20px;
+    padding: 20px;
+    border: 4px solid #000000;
+    
+}
+#win-screen 
+{
+    display: none;
+    margin: 20px;
+    padding: 20px;
+    border: 4px solid #000000;
+    background-color: #f7fb00;
+}

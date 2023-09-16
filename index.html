@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Riddle Quest</title>
+    <link rel="stylesheet" href="riddlegame.css">
+</head>
+<body>
+    <h1>Riddle Quest</h1>
+    <div id="start-menu">
+        <h2>Press "Start" To Play</h2>
+        <button onclick="startGame()">Start</button>
+    </div>
+
+    <div id="riddle-container" style="display: none;">
+        <h2>Rules:<br>- All Answers Are Lower Case <br> - Answer Every Riddle To Win! <br><br> Level <span id="level">1</span></h2>
+        <p id="riddle"></p>
+        <input type="text" id="guess" placeholder="Answer Here">
+        <button onclick="checkAnswer()">Submit Answer</button>
+        <p id="hint"></p>
+        <p id="result"></p>
+        <p>Time Elapsed: <span id="timer">0:00</span></p>
+        <p>Riddle Time: <span id="riddle-time">0:00</span></p>
+        <label for="level-select">Select Level:</label>
+        <select id="level-select" onchange="changeLevel()">
+            <option value="0">Level 1</option>
+            <option value="1">Level 2</option>
+            <option value="2">Level 3</option>
+            <option value="3">Level 4</option>
+            <!-- Add more levels here -->
+        </select>
+        <button onclick="previousLevel()">Previous Level</button>
+        <button onclick="nextLevel()">Next Level</button>
+    </div>
+
+    <div id="win-screen">
+        <h2>Congratulations! You completed all levels!</h2>
+        <p>Total Score: <span id="final-score">0</span></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script src="riddlegame.js"></script>
+</body>
+</html>
