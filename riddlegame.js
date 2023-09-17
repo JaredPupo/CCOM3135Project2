@@ -8,7 +8,7 @@ const riddles = [
     { question: "What is 3/7 chicken, 2/3 cat, and 2/4 goat?", answer: "chicago"},
     // Add more riddles { question: "", answer: ""},
 ];
-
+ 
 // Array before riddles are randomized
 shuffleArray(riddles);
 
@@ -50,6 +50,7 @@ function checkAnswer() {
     const correctAnswer = riddles[currentLevel].answer;
 
     if (userGuess === correctAnswer) {
+        document.getElementById("riddle-p").style.display = "block"
         document.getElementById("result").innerHTML = "";
         document.getElementById("hint").innerHTML = "";
         score += 1; // Total Score increase
@@ -78,7 +79,8 @@ function nextLevel() {
     } else {
         document.getElementById("result").innerHTML = "Congratulations! You completed all levels!";
         document.getElementById("hint").innerHTML = "";
-        document.getElementById("score").textContent = "Total Score: " + score;
+        document.getElementById("final-score").textContent = "Total Score: " + score;
+        document.getElementById("riddle-container").style.display = "none";
         clearInterval(timerInterval);
         showWinScreen();
     }
