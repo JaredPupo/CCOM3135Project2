@@ -2,10 +2,30 @@
 
 // Riddle array with questions and answers
 const riddles = [
-    { question: "The more you take, the more you leave behind. What am I?", answer: "footsteps" },
-    { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "m" },
-    { question: "I am easy to lift, but hard to throw. What am I?", answer: "feather" },
-    { question: "What is 3/7 chicken, 2/3 cat, and 2/4 goat?", answer: "chicago"},
+        {
+            question: "The more you take, the more you leave behind. What am I?",
+            answer: "footsteps",
+            hint: "What part of your body do you leave a mark on most of the time? What are those marks called?",
+            next: 1
+        },
+        {
+            question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
+            answer: "m",
+            hint: "Did you detect a pattern on the words above?",
+            next: 2
+        },
+        {   
+            question: "I am easy to lift, but hard to throw. What am I?", 
+            answer: "feather",
+            hint: "What inspired the design for airplanes? What do they have?",
+            next: 3 
+        },
+        {   
+            question: "What is 3/7 chicken, 2/3 cat, and 2/4 goat?", 
+            answer: "chicago",
+            hint: "Don't think about it too literally. The answer is staring at you right in the face.",
+            next: 4
+        },
     // Add more riddles { question: "", answer: ""},
 ];
  
@@ -17,6 +37,46 @@ let score = 0;
 let startTime = 0;
 let riddleStartTime = 0;
 let timerInterval;
+
+function registerUser(username, password) {
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    if (users[username]) {
+        alert('Username already exists!');
+        return;
+    }
+    users[username] = { password: password, score: 0, progress: 0 };
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Registered successfully!');
+}
+
+function loginUser(username, password) {
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    const user = users[username];
+    if (!user) {
+        alert('User does not exist!');
+        return false;
+    }
+    if (user.password !== password) {
+        alert('Incorrect password!');
+        return false;
+    }
+    return true;  // Successfully logged in
+}
+
+function saveProgress(username, progress, score) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    if (!users[username]) {
+        return;
+    }
+    users[username].progress = progress;
+    users[username].score = score;
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+function getProgress(username) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    return users[username] ? users[username].progress : 0;
+}
 
 // This randomizes the riddles in levels
 function shuffleArray(array) {
@@ -61,7 +121,7 @@ function checkAnswer() {
         document.getElementById("riddle-time").textContent = riddleTimeDisplay;
         setTimeout(nextLevel, 1500); // Go to the next level after 1 and a half seconds.
     } else {
-        document.getElementById("hint").innerHTML = "Hint: It's something related to the current riddle.";
+        document.getElementById("hint").innerHTML = riddles[currentLevel].hint;
         document.getElementById("result").innerHTML = "Try again.";
     }
 }
