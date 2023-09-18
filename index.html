@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="riddlegame.css">
 </head>
 <body>
+
     <h1 id="title">Riddle Quest</h1>
     <div id="start-menu">
         <h2>Press "Start" To Play</h2>
@@ -36,6 +37,33 @@
         <h2>Congratulations! You completed all levels!</h2>
         <p>Total Score: <span id="final-score">0</span></p>
     </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <label for="register-username">Username:</label>
+            <input type="text" id="register-username" required>
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" required>
+            <button onclick="handleRegister()">Register</button>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+            <button onclick="handleLogin()">Login</button>
+        </div>
+    </div>
+
+    <button onclick="showRegisterModal()">Register</button>
+    <button onclick="showLoginModal()">Login</button>
 
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script src="riddlegame.js"></script>

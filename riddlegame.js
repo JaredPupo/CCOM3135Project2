@@ -198,3 +198,50 @@ function showWinScreen() //Win Screen pop up
     document.getElementById("win-screen").style.display = "block";
     document.getElementById("final-score").textContent = score;
 }
+
+const registerModal = document.getElementById("registerModal");
+const loginModal = document.getElementById("loginModal");
+
+// Show the registration modal
+function showRegisterModal() {
+    registerModal.style.display = "block";
+}
+
+// Show the login modal
+function showLoginModal() {
+    loginModal.style.display = "block";
+}
+
+// Handle registration logic
+function handleRegister() {
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
+    registerUser(username, password);
+    registerModal.style.display = "none"; // Close the modal
+}
+
+// Handle login logic
+function handleLogin() {
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+    if (loginUser(username, password)) {
+        loginModal.style.display = "none"; // Close the modal if successful
+    }
+}
+
+// Close modals when 'x' is clicked
+document.querySelectorAll('.close').forEach(closeButton => {
+    closeButton.onclick = function() {
+        registerModal.style.display = "none";
+        loginModal.style.display = "none";
+    }
+});
+
+// Close modals when anywhere outside the modal content is clicked
+window.onclick = function(event) {
+    if (event.target == registerModal) {
+        registerModal.style.display = "none";
+    } else if (event.target == loginModal) {
+        loginModal.style.display = "none";
+    }
+}
