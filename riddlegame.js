@@ -107,7 +107,8 @@ function displayRiddle() {
 // After you press the Check Answer Button, it checks if its correct or not
 function checkAnswer() {
     const userGuess = document.getElementById("guess").value.toLowerCase();
-    const correctAnswer = riddles[currentLevel].answer;
+    const correctAnswer = riddles[currentLevel].answer; 
+    document.getElementById("guess").value = "";
 
     if (userGuess === correctAnswer) {
         document.getElementById("riddle-p").style.display = "block"
