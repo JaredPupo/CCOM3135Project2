@@ -19,10 +19,11 @@
         <button onclick="checkAnswer()">Submit Answer</button>
         <p id="hint"></p>
         <p id="result"></p>
-        <p>Time Elapsed: <span id="timer">0:00</span></p>
+        <!--<p>Time Elapsed: <span id="timer">0:00</span></p>-->
         <p id="riddle-p">Previous Riddle Time: <span id="riddle-time">0:00</span></p>
         <label for="level-select">Select Level:</label>
         <select id="level-select" onchange="changeLevel()">
+            <option value="">Levels</option>
             <option value="0">Level 1</option>
             <option value="1">Level 2</option>
             <option value="2">Level 3</option>
@@ -38,7 +39,9 @@
         <p>Total Score: <span id="final-score">0</span></p>
     </div>
 
-    <div id="registerModal" class="modal">
+    
+    <!--
+        <div id="registerModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Register</h2>
@@ -49,8 +52,7 @@
             <button onclick="handleRegister()">Register</button>
         </div>
     </div>
-
-    <div id="loginModal" class="modal">
+        <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Login</h2>
@@ -61,10 +63,13 @@
             <button onclick="handleLogin()">Login</button>
         </div>
     </div>
+    -->
+    
 
+   <!--
     <button onclick="showRegisterModal()">Register</button>
     <button onclick="showLoginModal()">Login</button>
-
+   --> 
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script src="riddlegame.js"></script>
 </body>
